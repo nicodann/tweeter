@@ -6,6 +6,11 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
   
 }
 
@@ -21,4 +26,7 @@ nav span {
 
 .fas.fa-angle-double-down {
   color: red;
+}
+
+header {
 }
