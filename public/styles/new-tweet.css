@@ -3,9 +3,9 @@
   flex-wrap: wrap;
 }
 
-.new-tweet label, .new-tweet textarea {
+/* .new-tweet label, .new-tweet textarea {
   width: 50%;
-}
+} */
 
 .new-tweet label {
   font-weight: bold;
@@ -14,9 +14,12 @@
 .new-tweet textarea {
   border: none;
   background: #f4f1ec;
+  width: 100vw;
+  resize: none;
+  outline: none;
 }
 
-.new-tweet .footer {
+.new-tweet .bottom {
   width: 100%;
   display: flex;
   justify-content: space-between;

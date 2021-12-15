@@ -1,9 +1,10 @@
-section.tweets {
+.tweet {
   border: solid medium black;
   margin: 40px 0;
+  padding-top: 10px;
   
 }
-section.tweets:hover {
+.tweet:hover {
   box-shadow: 5px 5px #c9cbe1;
 }
 
@@ -14,12 +15,14 @@ section.tweets:hover {
   justify-content: space-between;
 }
 
-.tweets p.handle {
+.faded {
   opacity: 0.5;
 }
 
 .avatarName {
+  width: 153px;
   display: flex;
+  justify-content: space-between;
 }
 
 .tweets footer {
