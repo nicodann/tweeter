@@ -30,3 +30,7 @@ body {
    margin: 0 auto;
    background-color: #f4f1ec;
  }
+
+ .new-tweet, .tweets {
+  padding: 0 20px;
+}

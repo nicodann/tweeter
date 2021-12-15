@@ -1,0 +1,39 @@
+section.tweets {
+  border: solid medium black;
+  margin: 40px 0;
+  
+}
+section.tweets:hover {
+  box-shadow: 5px 5px #c9cbe1;
+}
+
+.tweets header {
+  background: #f4f1ec;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tweets p.handle {
+  opacity: 0.5;
+}
+
+.avatarName {
+  display: flex;
+}
+
+.tweets footer {
+  display: flex;
+  justify-content: space-between;
+  font: 15px bold;
+  border-top: solid black medium;
+}
+
+footer .icons {
+  margin-top: 10px;
+}
+
+footer .icons i:hover {
+  color: goldenrod;
+}
+
