@@ -3,17 +3,6 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-// const tweet =   {
-//   "user": {
-//     "name": "Newton",
-//     "avatars": "https://i.imgur.com/73hZDYK.png",
-//     "handle": "@SirIsaac"
-//   },
-//   "content": {
-//     "text": "If I have seen further it is by standing on the shoulders of giants"
-//   },
-//   "created_at": 1639316897884
-// };
 
 const data = [
   {
@@ -64,7 +53,7 @@ $(document).ready(() => {
         </header>
         <p class="tweet-content">${tweet.content.text}</p>
         <footer>
-          <p>${tweet.created_at}</p>
+          <p>${timeago.format(tweet.created_at)}</p>
           <div class="icons">
             <i class="fas fa-flag"></i>
             <i class="fas fa-retweet"></i>
@@ -78,7 +67,36 @@ $(document).ready(() => {
 
   };
 
-  renderTweets(data);
+  // renderTweets(data);
 
+  $('#newTweetForm').on('submit', function(e) {
+    e.preventDefault();
+    console.log($(this))
+    const serializedData = $(this).serialize();
+    console.log("serialized",serializedData);
+    
+      $.post("/tweets", serializedData)
+      .then((resp) => {
+        console.log(resp);
+        // renderTweets();
+      })
+    
+    
+  });
+
+  const loadTweets = function() {
+
+    $.ajax({
+      method: "GET",
+      dataType: "json",
+      url: "/tweets",
+      success: tweets => {
+        console.log(tweets);
+        renderTweets(tweets);
+      }
+    });
+
+  };
+  loadTweets();
 
 });
