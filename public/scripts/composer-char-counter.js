@@ -1,5 +1,4 @@
 $(document).ready(() => {
-  let count = 0;
   $('#tweet-text').on('input', function(e) {
     const value = $(this).val();
     let counter;
@@ -14,5 +13,3 @@ $(document).ready(() => {
 
   })
 })
-
-// a;oseruhg382ha;sdkjvaxcmnva;ksjhfa;oweuhpfaousihdg;akjshd;fakjsdhf;ajsdhf;ajsdhg;ajseh;gowuiheoauhdf;ajhdsf;jahsd;lfkajs;dgjhe;ihga;;;aslkd

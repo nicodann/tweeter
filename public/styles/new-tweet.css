@@ -1,11 +1,10 @@
-.new-tweet form {
-  display: flex;
-  flex-wrap: wrap;
+.new-tweet {
+  margin-top: 20px;
 }
 
-/* .new-tweet label, .new-tweet textarea {
-  width: 50%;
-} */
+#newTweetForm {
+  margin: 20px;
+}
 
 .new-tweet label {
   font-weight: bold;
@@ -14,7 +13,7 @@
 .new-tweet textarea {
   border: none;
   background: #f4f1ec;
-  width: 100vw;
+  width: 100%;
   resize: none;
   outline: none;
 }
@@ -34,4 +33,14 @@
   color: white;
   font-weight: bold;
   font-size: 0.8em;
+}
+
+.error {
+  /* display: none; */
+  display: none;
+  align-items: center;
+  line-height: 1px;
+  border: solid medium red;
+  padding: 0 5px;
+  color: red;
 }

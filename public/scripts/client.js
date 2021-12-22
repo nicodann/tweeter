@@ -29,13 +29,21 @@ const data = [
   }
 ];
 
+const escapeCode = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 $(document).ready(() => {
 
   const renderTweets = function(tweets) {
 
+    $('section.tweets').empty();
+
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('section.tweets').append($tweet);
+      $('section.tweets').prepend($tweet);
     }
 
   };
@@ -51,7 +59,7 @@ $(document).ready(() => {
           </div>
           <p class="handle">${tweet.user.handle}</p>
         </header>
-        <p class="tweet-content">${tweet.content.text}</p>
+        <p class="tweet-content">${escapeCode(tweet.content.text)}</p>
         <footer>
           <p>${timeago.format(tweet.created_at)}</p>
           <div class="icons">
@@ -67,20 +75,34 @@ $(document).ready(() => {
 
   };
 
-  // renderTweets(data);
+  renderTweets(data);
+  $('#tweet-text').on('focus', function() {
+    $('.error').css('display', 'none');
+  })
 
   $('#newTweetForm').on('submit', function(e) {
     e.preventDefault();
-    console.log($(this))
     const serializedData = $(this).serialize();
-    console.log("serialized",serializedData);
-    
+    const tweetLength = $('#tweet-text').val().length;
+    if (tweetLength === 0) {
+      // console.log("length:",tweetLength)
+      // console.log("errorText:",$('.error p').text())
+      $('.error p').text("Your tweet is empt_");
+      // console.log("errorText:",$('.error p').text())
+      $('.error').css('display', 'flex');
+      return
+    } else if (tweetLength > 140) {
+      $('.error p').text(`&nbspYour tweet is tooooooo looooooooooong!!!! `);
+      $('.error').css('display', 'flex');
+      return
+    } else {
       $.post("/tweets", serializedData)
-      .then((resp) => {
-        console.log(resp);
-        // renderTweets();
+      .then(() => {
+        $('#tweet-text').val("");
+        $('.new-tweet .counter').val(0);
+        loadTweets();
       })
-    
+    }
     
   });
 
@@ -91,12 +113,14 @@ $(document).ready(() => {
       dataType: "json",
       url: "/tweets",
       success: tweets => {
-        console.log(tweets);
         renderTweets(tweets);
       }
     });
 
   };
+
   loadTweets();
+
+  
 
 });
