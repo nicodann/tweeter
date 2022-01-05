@@ -35,58 +35,83 @@ const escapeCode = function (str) {
   return div.innerHTML;
 };
 
-$(document).ready(() => {
+const renderTweets = function (tweets) {
 
-  const renderTweets = function(tweets) {
+  $('section.tweets').empty();
 
-    $('section.tweets').empty();
+  for (const tweet of tweets) {
+    const $tweet = createTweetElement(tweet);
+    $('section.tweets').prepend($tweet);
+  }
 
-    for (const tweet of tweets) {
-      const $tweet = createTweetElement(tweet);
-      $('section.tweets').prepend($tweet);
+};
+
+const createTweetElement = function (tweet) {
+
+  const $tweet = $(`
+    <article class="tweet">
+      <header>
+        <div class="avatarName">
+          <img src="${tweet.user.avatars}" alt="Avatar Picture">
+          <p>${tweet.user.name}</p>
+        </div>
+        <p class="handle">${tweet.user.handle}</p>
+      </header>
+      <p class="tweet-content">${escapeCode(tweet.content.text)}</p>
+      <footer>
+        <p>${timeago.format(tweet.created_at)}</p>
+        <div class="icons">
+          <i class="fas fa-flag"></i>
+          <i class="fas fa-retweet"></i>
+          <i class="fas fa-heart"></i>
+        </div>
+      </footer>
+    </article>
+  `);
+
+  return $tweet;
+
+};
+
+// renderTweets(data);
+
+$('#tweet-text').on('focus', function () {
+  $('.error').css('display', 'none');
+})
+
+const loadTweets = function () {
+
+  $.ajax({
+    method: "GET",
+    dataType: "json",
+    url: "/tweets",
+    success: tweets => {
+      renderTweets(tweets);
     }
+  }).then(function () {
+    $('.tweet').hover(
+      function() {
+        $('.icons').css('display', 'inline');
+      },
+      function() {
+        $('.icons').css('display', 'none');
+      }
+    );
+  });
 
-  };
+};
 
-  const createTweetElement = function(tweet) {
+$(document).ready(function () {
 
-    const $tweet = $(`
-      <article class="tweet">
-        <header>
-          <div class="avatarName">
-            <img src="${tweet.user.avatars}" alt="Avatar Picture">
-            <p>${tweet.user.name}</p>
-          </div>
-          <p class="handle">${tweet.user.handle}</p>
-        </header>
-        <p class="tweet-content">${escapeCode(tweet.content.text)}</p>
-        <footer>
-          <p>${timeago.format(tweet.created_at)}</p>
-          <div class="icons">
-            <i class="fas fa-flag"></i>
-            <i class="fas fa-retweet"></i>
-            <i class="fas fa-heart"></i>
-          </div>
-        </footer>
-      </article>
-    `);
 
-    return $tweet;
 
-  };
-
-  renderTweets(data);
-  $('#tweet-text').on('focus', function() {
-    $('.error').css('display', 'none');
-  })
-
-  $('#newTweetForm').on('submit', function(e) {
+  $('#newTweetForm').on('submit', function (e) {
     e.preventDefault();
     const serializedData = $(this).serialize();
     const tweetLength = $('#tweet-text').val().length;
     if (tweetLength === 0) {
       $('.error p').text("Your tweet is empt_"),
-      $('.error').css('display', 'flex');
+        $('.error').css('display', 'flex');
       return
     } else if (tweetLength > 140) {
       $('.error p').text(` Your tweet is tooooooo looooooooooong!!!! `);
@@ -94,30 +119,15 @@ $(document).ready(() => {
       return
     } else {
       $.post("/tweets", serializedData)
-      .then(() => {
-        $('#tweet-text').val("");
-        $('.new-tweet .counter').val(0);
-        loadTweets();
-      })
+        .then(() => {
+          $('#tweet-text').val("");
+          $('.new-tweet .counter').val(140);
+          loadTweets();
+        })
     }
-    
+
   });
 
-  const loadTweets = function() {
-
-    $.ajax({
-      method: "GET",
-      dataType: "json",
-      url: "/tweets",
-      success: tweets => {
-        renderTweets(tweets);
-      }
-    });
-
-  };
-
   loadTweets();
-
-  
 
 });

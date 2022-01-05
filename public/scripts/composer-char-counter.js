@@ -7,7 +7,7 @@ $(document).ready(() => {
       $(this).siblings().children('.counter').css('color', 'red');
     } else {
       $(this).siblings().children('.counter').css('color', 'black');
-      counter = value.length;
+      counter = 140 - value.length;
     }
     $(this).siblings().children('.counter').text(counter);
 
