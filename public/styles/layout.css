@@ -30,3 +30,13 @@ body {
    margin: 0 auto;
    background-color: #f4f1ec;
  }
+
+ @media only screen and (min-width: 1024px) {
+   .container {
+     width: 60%;
+     margin-top: 200px;
+   }
+   body {
+     display: flex;
+   }
+ }

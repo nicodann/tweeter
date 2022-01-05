@@ -85,14 +85,11 @@ $(document).ready(() => {
     const serializedData = $(this).serialize();
     const tweetLength = $('#tweet-text').val().length;
     if (tweetLength === 0) {
-      // console.log("length:",tweetLength)
-      // console.log("errorText:",$('.error p').text())
-      $('.error p').text("Your tweet is empt_");
-      // console.log("errorText:",$('.error p').text())
+      $('.error p').text("Your tweet is empt_"),
       $('.error').css('display', 'flex');
       return
     } else if (tweetLength > 140) {
-      $('.error p').text(`&nbspYour tweet is tooooooo looooooooooong!!!! `);
+      $('.error p').text(` Your tweet is tooooooo looooooooooong!!!! `);
       $('.error').css('display', 'flex');
       return
     } else {

@@ -21,6 +21,7 @@
 
 .avatarName {
   width: 153px;
+  height: 75.59px;
   display: flex;
   justify-content: space-between;
 }
