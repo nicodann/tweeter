@@ -4,30 +4,30 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1639316897884
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1639403297884
-  }
-];
+// const data = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png",
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1639316897884
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd"
+//     },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1639403297884
+//   }
+// ];
 
 const escapeCode = function (str) {
   let div = document.createElement("div");
@@ -73,8 +73,6 @@ const createTweetElement = function (tweet) {
 
 };
 
-// renderTweets(data);
-
 $('#tweet-text').on('focus', function () {
   $('.error').css('display', 'none');
 })
@@ -103,8 +101,6 @@ const loadTweets = function () {
 
 $(document).ready(function () {
 
-
-
   $('#newTweetForm').on('submit', function (e) {
     e.preventDefault();
     const serializedData = $(this).serialize();
@@ -127,6 +123,10 @@ $(document).ready(function () {
     }
 
   });
+
+  $('#tweet-text').on('focus', function() {
+    $('.error').css('display', 'none');
+  })
 
   loadTweets();
 
