@@ -4,38 +4,13 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png",
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1639316897884
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd"
-//     },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1639403297884
-//   }
-// ];
-
-const escapeCode = function (str) {
+const escapeCode = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
-const renderTweets = function (tweets) {
+const renderTweets = function(tweets) {
 
   $('section.tweets').empty();
 
@@ -46,7 +21,7 @@ const renderTweets = function (tweets) {
 
 };
 
-const createTweetElement = function (tweet) {
+const createTweetElement = function(tweet) {
 
   const $tweet = $(`
     <article class="tweet">
@@ -73,11 +48,11 @@ const createTweetElement = function (tweet) {
 
 };
 
-$('#tweet-text').on('focus', function () {
+$('#tweet-text').on('focus', function() {
   $('.error').css('display', 'none');
-})
+});
 
-const loadTweets = function () {
+const loadTweets = function() {
 
   $.ajax({
     method: "GET",
@@ -86,7 +61,7 @@ const loadTweets = function () {
     success: tweets => {
       renderTweets(tweets);
     }
-  }).then(function () {
+  }).then(function() {
     $('.tweet').hover(
       function() {
         $('.icons').css('display', 'inline');
@@ -99,34 +74,34 @@ const loadTweets = function () {
 
 };
 
-$(document).ready(function () {
+$(document).ready(function() {
 
-  $('#newTweetForm').on('submit', function (e) {
+  $('#newTweetForm').on('submit', function(e) {
     e.preventDefault();
     const serializedData = $(this).serialize();
     const tweetLength = $('#tweet-text').val().length;
     if (tweetLength === 0) {
       $('.error p').text("Your tweet is empt_"),
-        $('.error').css('display', 'flex');
-      return
+      $('.error').css('display', 'flex');
+      return;
     } else if (tweetLength > 140) {
       $('.error p').text(` Your tweet is tooooooo looooooooooong!!!! `);
       $('.error').css('display', 'flex');
-      return
+      return;
     } else {
       $.post("/tweets", serializedData)
         .then(() => {
           $('#tweet-text').val("");
           $('.new-tweet .counter').val(140);
           loadTweets();
-        })
+        });
     }
 
   });
 
   $('#tweet-text').on('focus', function() {
     $('.error').css('display', 'none');
-  })
+  });
 
   loadTweets();
 

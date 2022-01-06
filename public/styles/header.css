@@ -6,7 +6,10 @@ header.main {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: #d79922 url(../images/45-degree-fabric-light.png);
+  /* background: #d79922 url(../images/bright-squares.png); */
+  /* background-image: url(../images/bright-squares.png); */
+  background-image: url(../images/green-gobbler.png);
+  background-color: #d79922;
 }
 
 @media only screen and (min-width: 1024px) {

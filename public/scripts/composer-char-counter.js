@@ -1,5 +1,5 @@
 $(document).ready(() => {
-  $('#tweet-text').on('input', function(e) {
+  $('#tweet-text').on('input', function() {
     const value = $(this).val();
     let counter;
     if (value.length > 140) {
@@ -11,5 +11,5 @@ $(document).ready(() => {
     }
     $(this).siblings().children('.counter').text(counter);
 
-  })
-})
+  });
+});
