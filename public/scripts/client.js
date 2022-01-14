@@ -121,13 +121,13 @@ $(document).ready(function() {
   $('.navRight').on('click', function() {
     const scrollPos = $(window).scrollTop();
     if (scrollPos === 0) {
-      $('.new-tweet').toggle(600);
+      $('.new-tweet').toggle(400);
     } else {
-      $('.new-tweet').show(600);
+      $('.new-tweet').show(400);
     }
     $('html, body').animate({
       scrollTop: $("html,body").offset().top
-    }, 2000);
+    }, 500);
   });
 
   loadTweets();
