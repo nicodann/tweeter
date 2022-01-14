@@ -119,7 +119,15 @@ $(document).ready(function() {
   );
 
   $('.navRight').on('click', function() {
-    $('.new-tweet').toggle(600);
+    const scrollPos = $(window).scrollTop();
+    if (scrollPos === 0) {
+      $('.new-tweet').toggle(600);
+    } else {
+      $('.new-tweet').show(600);
+    }
+    $('html, body').animate({
+      scrollTop: $("html,body").offset().top
+    }, 2000);
   });
 
   loadTweets();

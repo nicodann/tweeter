@@ -1,6 +1,6 @@
 nav {
   height: 120px;
-  background: none;
+  background: #4056A1;
   color: #FFFFFF;
   padding: 0em 1.5em;
   display: flex;
@@ -30,10 +30,4 @@ nav span {
 
 .fas.fa-angle-double-down {
   color: red;
-}
-
-@media only screen and (min-width: 768px) {
-  nav {
-   background: #4056A1;
-  }
 }
