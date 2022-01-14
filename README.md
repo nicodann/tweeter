@@ -18,3 +18,13 @@ This repository is the starter code for the project: Students will fork and clon
 - Node 5.10.x or above
 - body-parser
 - chance
+
+## Screenshots
+
+!["Main Page"](https://github.com/nicodann/tweeter/blob/main/docs/MainPage.png?raw=true)
+
+
+!["Compose a Tweet"](https://github.com/nicodann/tweeter/blob/main/docs/whatAreYouHummingAbout.png?raw=true)
+
+
+!["Oh No!"](https://github.com/nicodann/tweeter/blob/main/docs/tweet_too_long.png?raw=true)
