@@ -1,13 +1,10 @@
 header.main {
-  /* height: 400px; */
   width: 100%;
   padding: 120px 0 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* background: #d79922 url(../images/bright-squares.png); */
-  /* background-image: url(../images/bright-squares.png); */
   background-image: url(../images/green-gobbler.png);
   background-color: #d79922;
 }
