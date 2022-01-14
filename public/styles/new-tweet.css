@@ -1,9 +1,6 @@
 .new-tweet {
+  display: none;
   margin-top: 20px;
-}
-
-#newTweetForm {
-  margin: 20px;
 }
 
 .new-tweet label {

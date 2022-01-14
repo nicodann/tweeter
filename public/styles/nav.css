@@ -18,10 +18,14 @@ nav span {
   font-family:'Bungee', cursive;
 }
 
-.navRight {
+.navRight button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
+  background: none;
+  color: white;
+  border: none;
 }
 
 .fas.fa-angle-double-down {

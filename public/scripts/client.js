@@ -64,11 +64,17 @@ const loadTweets = function() {
   }).then(function() {
     $('.tweet').hover(
       function() {
-        $('.icons').css('display', 'inline');
+        $(this).find('.icons').css('display', 'inline');
       },
       function() {
-        $('.icons').css('display', 'none');
+        $(this).find('.icons').css('display', 'none');
       }
+      // function() {
+      //   $('.icons').css('display', 'inline');
+      // },
+      // function() {
+      //   $('.icons').css('display', 'none');
+      // }
     );
   });
 
@@ -101,6 +107,19 @@ $(document).ready(function() {
 
   $('#tweet-text').on('focus', function() {
     $('.error').css('display', 'none');
+  });
+
+  $('.navRight').hover(
+    function() {
+      $('.navRight').css('outline', 'solid thin lightgrey');
+    },
+    function() {
+      $('.navRight').css('outline', 'none');
+    }
+  );
+
+  $('.navRight').on('click', function() {
+    $('.new-tweet').toggle(600);
   });
 
   loadTweets();
